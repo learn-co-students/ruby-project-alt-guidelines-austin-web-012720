@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 4) do
 
   create_table "proteins", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "name"
     t.integer "vegetable_id"
     t.integer "protein_id"
+    t.text "instructions"
   end
 
   create_table "vegetables", force: :cascade do |t|
