@@ -8,11 +8,11 @@ class Api < ActiveRecord::Base
         response = Net::HTTP.get_response(uri)
         recipe = response.body
         recipe_hash = JSON.parse(recipe)
-        
+
         puts recipe_hash["recipes"][0]["title"]
         puts
         puts recipe_hash["recipes"][0]["instructions"]
+        puts
     end
-
 
 end

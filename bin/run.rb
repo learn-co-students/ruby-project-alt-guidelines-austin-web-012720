@@ -2,6 +2,7 @@ require_relative '../config/environment'
 require 'open-uri'
 require 'net/http'
 require 'pry'
+prompt = TTY::Prompt.new
 
 
 Header.header_logo
@@ -12,6 +13,12 @@ puts
 puts "Fuck yeah dude! Let's find some recipes containing #{prot} and #{veg}!"
 puts 
 Api.search_recipes(prot, veg)
+puts
+until prompt.yes?("Does this recipe look good to you?") == true
+    puts
+    Api.search_recipes(prot, veg)
+end
+
 
 
 # url = "https://api.spoonacular.com/recipes/random?number=1&tags=vegetarian,dessert&apiKey=5f37997387b14e7d89c66a547ddcce3a"
