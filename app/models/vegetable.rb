@@ -16,14 +16,7 @@ class Vegetable < ActiveRecord::Base
       until prompt.yes?("You selected #{@veggie_choice}, is this correct?") == true
         @veggie_choice = prompt.select("Really? Pick a vegetable!", %w(Carrots Broccoli Cauliflower Peas))
       end
-
-    # This prompt is numbered
-    # choices = %w(Carrots Broccoli Cauliflower Peas)
-    # prompt.enum_select("Please pick your Vegetable", choices)
-    # until prompt.yes?("You selected #{veggie_choice}, is this correct?") == true
-    #     veggie_choice = veggie_choice = prompt.enum_select("Please pick your Vegetable", choices)
-    # end
-    # binding.pry
+      return @veggie_choice
   end
 
   def self.veggie_choice
