@@ -24,7 +24,6 @@ end
 
 
 
-
 # url = "https://api.spoonacular.com/recipes/random?number=1&tags=vegetarian,dessert&apiKey=5f37997387b14e7d89c66a547ddcce3a"
 # url = "https://api.spoonacular.com/recipes/random?number=1&tags=#{prot},#{veg}&apiKey=5f37997387b14e7d89c66a547ddcce3a"
 # uri = URI.parse(url)
