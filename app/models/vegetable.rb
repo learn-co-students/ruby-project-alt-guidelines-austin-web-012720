@@ -60,7 +60,6 @@ class Vegetable < ActiveRecord::Base
         veggie.save
       end
     end
-    return self.all
   end
 
   def self.list
