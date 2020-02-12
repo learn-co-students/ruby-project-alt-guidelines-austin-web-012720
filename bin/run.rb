@@ -17,7 +17,11 @@ puts
 until prompt.yes?("Does this recipe look good to you?") == true
     puts
     Api.search_recipes(prot, veg)
+
 end
+
+
+
 
 
 
