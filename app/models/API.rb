@@ -21,7 +21,8 @@ class Api < ActiveRecord::Base
         # newline used lump return
         if text.scan(/$/)
             while i < text.scan(/$/).count do
-                puts "#{i}. #{text.split(/$/)[i]}"
+                puts "#{i}. #{text.split(/$/)[i][1..-1]}"
+                puts
                 i += 1
             end 
         end 
