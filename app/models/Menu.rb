@@ -74,7 +74,7 @@ class Menu < ActiveRecord::Base
             Protein.change
         elsif edit_response == "Edit Vegetable"
             Vegetable.change
-        endn
+        end
         puts
         self.start
     end
