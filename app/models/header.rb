@@ -1,5 +1,11 @@
+require 'colorator'
+
 class Header < ActiveRecord::Base
+    
+    
     def self.header_logo
+        include TTY::Color
+        
         puts "                                                      
         ██████╗ ███████╗ ██████╗██╗██████╗ ███████╗███╗   ███╗███████╗
         ██╔══██╗██╔════╝██╔════╝██║██╔══██╗██╔════╝████╗ ████║██╔════╝
@@ -7,8 +13,8 @@ class Header < ActiveRecord::Base
         ██╔══██╗██╔══╝  ██║     ██║██╔═══╝ ██╔══╝  ██║╚██╔╝██║██╔══╝  
         ██║  ██║███████╗╚██████╗██║██║     ███████╗██║ ╚═╝ ██║███████╗
         ╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝╚═╝     ╚══════╝╚═╝     ╚═╝╚══════╝
-                                                                    "                                                                                
-        puts "Welcome to RecipeMe!"
+                                                                    ".cyan                                                                  
+        puts "Welcome to RecipeMe!".bold.red
         puts "\n"
     end
 end

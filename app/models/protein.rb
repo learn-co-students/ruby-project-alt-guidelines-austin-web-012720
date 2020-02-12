@@ -45,9 +45,7 @@ def self.delete
   protein_instance = self.find_by(name: protein_selection)
   if prompt.yes?("You want to delete '#{protein_selection}'\n Is this correct?") == true
     protein_instance.destroy
-    binding.pry
   end
-  return self.all
 end
 
 def self.add_new
