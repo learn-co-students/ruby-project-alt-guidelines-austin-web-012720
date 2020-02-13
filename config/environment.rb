@@ -9,4 +9,6 @@ ActiveRecord::Base.establish_connection(
   database: 'db/development.db'
   )
 
+ActiveRecord::Base.logger = Logger.new(STDOUT)
+ActiveRecord::Base.logger.level = 1
 require_all 'app/models'

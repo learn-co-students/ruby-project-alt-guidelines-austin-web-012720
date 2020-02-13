@@ -26,25 +26,24 @@ class Api < ActiveRecord::Base
                 puts
                 i += 1
             end 
-        end 
-
-        # ordered list lump
-        if text.scan(/\d\./)
+        elsif text.scan(/\d\./) # ordered list lump
             while i < text.scan(/\d\./).count do
                 puts "#{i}. #{text.split(/\d\./)[i]}"
                 i += 1
             end
-        end 
-
-        # remove html tags
-        if text.scan(/<ol>/)
-        text_array = text.gsub(/<\/li>|<ol>|<\/ol>|<\/html>|<\/body>/,'').split(/<li>/)
+        elsif text.scan(/<ol>/) # remove html tags
+            text_array = text.gsub(/<\/li>|<ol>|<\/ol>|<\/html>|<\/body>/,'').split(/<li>/)
             while i < text_array.length do
                 puts "#{i}. #{text_array[i]}"
                 i += 1
-            end 
+            end
+        else
+            puts recipe_hash["recipes"][0]["instructions"] 
         end
-       Recipe.create(name: recipe_hash["recipes"][0]["title"], instructions: recipe_hash["recipes"][0]["instructions"])
+
+
+
+    #    Recipe.create(name: recipe_hash["recipes"][0]["title"], instructions: recipe_hash["recipes"][0]["instructions"])
 
     end
 
