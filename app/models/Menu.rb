@@ -36,6 +36,8 @@ class Menu < ActiveRecord::Base
             self.edit_items
         elsif response == "Show Items"
             self.show_items 
+        elsif response == "Exit"
+            abort ("\nBon Appetit!!!\n")
         end
 
     end
