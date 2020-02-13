@@ -8,7 +8,7 @@ class Menu < ActiveRecord::Base
     @add_options = ["Add Protein", "Add Vegetable", "<Back"]
     @delete_options = ["Delete Protein", "Delete Vegetable", "<Back"]
     @edit_options = ["Edit Protein", "Edit Vegetable", "<Back"]
-    @show_options = ["Show Proteins", "Show Vegetables", "<Back"]
+    @show_options = ["Show Proteins", "Show Vegetables", "Show Recipes", "<Back"]
 
     def self.start
         prompt = TTY::Prompt.new
@@ -18,10 +18,7 @@ class Menu < ActiveRecord::Base
         if response == "Find Recipe"
             prot = Protein.protein_select.downcase
             veg = Vegetable.veggie_select.downcase
-            puts
-            puts "Fuck yeah dude! Let's find some recipes containing #{prot} and #{veg}!"
-            puts 
-            puts
+            puts "\nNice choices! Let's find some recipes containing #{prot} and #{veg}!\n\n"
             until prompt.yes?("Does this recipe look good to you?") == true
                 puts
                 Api.search_recipes(prot, veg)
@@ -36,6 +33,8 @@ class Menu < ActiveRecord::Base
             self.edit_items
         elsif response == "Show Items"
             self.show_items 
+        elsif response == "Exit"
+            
         end
 
     end
@@ -86,12 +85,12 @@ class Menu < ActiveRecord::Base
             Protein.list
         elsif show_response == "Show Vegetables"
             Vegetable.list
+        elsif show_response == "Show Recipes"
+            Recipe.list
         end
         puts
         self.start
     end
-
-
 
 end
 

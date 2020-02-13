@@ -10,9 +10,10 @@ class Api < ActiveRecord::Base
         response = Net::HTTP.get_response(uri)
         recipe = response.body
         recipe_hash = JSON.parse(recipe)
-        
+
+        # recipe_title = recipe_hash["recipes"][0]["title"]
         puts recipe_hash["recipes"][0]["title"]
-        puts
+        puts 
 
 
         # puts recipe instructions with basic formatting
@@ -42,9 +43,9 @@ class Api < ActiveRecord::Base
         end
 
 
-
-    #    Recipe.create(name: recipe_hash["recipes"][0]["title"], instructions: recipe_hash["recipes"][0]["instructions"])
-
+        # id_of_veg = Vegetable.all.select { |veggies| veggies.name == veg }
+        # id_of_prot = Protein.all.select { |proteins| proteins.name == prot}
+        # Recipe.create(name: recipe_title, instructions: text, vegetable_id: id_of_veg, protein_id: id_of_prot)
     end
 
 end
