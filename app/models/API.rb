@@ -14,10 +14,11 @@ class Api < ActiveRecord::Base
         puts recipe_hash["recipes"][0]["title"]
         puts
 
+
         # puts recipe instructions with basic formatting
         text = recipe_hash["recipes"][0]["instructions"]
         i = 1
-
+        
         # newline used lump return
         if text.scan(/$/)
             while i < text.scan(/$/).count do
@@ -43,5 +44,8 @@ class Api < ActiveRecord::Base
                 i += 1
             end 
         end
+       Recipe.create(name: recipe_hash["recipes"][0]["title"], instructions: recipe_hash["recipes"][0]["instructions"])
+
     end
+
 end

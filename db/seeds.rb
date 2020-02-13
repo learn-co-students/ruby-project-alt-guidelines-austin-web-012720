@@ -18,6 +18,9 @@ Vegetable.create(:name => "Corn")
 
 
 
+
+
+
 # remove these from being used //james
 
 # Recipe.create(:name => "recipe 1", :vegetable_id => 1, :protein_id => 1)

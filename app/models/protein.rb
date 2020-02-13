@@ -23,4 +23,52 @@ class Protein < ActiveRecord::Base
     @protein_choice
   end
 
+  # def self.change_protein(prot, new_prot)
+  #   protein = self.find_by(name: prot)
+  #   protein.name = new_prot
+  #   protein.save
+  # end
+
+def self.change
+  prompt = TTY::Prompt.new
+  protein_selection = prompt.select("Choose the protein you'd like to change", list_all_protein_names)
+  protein_instance = self.find_by(name: protein_selection)
+  protein_instance.name = prompt.ask("What would you like to change '#{protein_selection}' to?").capitalize
+  if prompt.yes?("You want to change '#{protein_selection}' to '#{protein_instance.name}'\n Is this correct?") == true
+    protein_instance.save
+  end
+end
+
+def self.delete
+  prompt = TTY::Prompt.new
+  protein_selection = prompt.select("Choose the protein you'd like to delete", list_all_protein_names)
+  protein_instance = self.find_by(name: protein_selection)
+  if prompt.yes?("You want to delete '#{protein_selection}'\n Is this correct?") == true
+    protein_instance.destroy
+  end
+end
+
+def self.add_new
+  prompt = TTY::Prompt.new
+  proteins = self.all.map {|protein| protein.name }
+  new_protein = prompt.ask("What protein would you like to add?").capitalize
+  if proteins.include?(new_protein)
+    puts "That protein already exists"
+  else
+    protein = Protein.new(name: new_protein)
+    if prompt.yes?("You've added '#{new_protein}' to the list\n Would you like to save?") == true
+      protein.save
+    end
+  end
+  return self.all
+end
+
+def self.list
+  self.all.map {|protein| p protein.name}
+end
+
+def self.find(name)
+  self.all.find_by(name: name)
+end
+
 end

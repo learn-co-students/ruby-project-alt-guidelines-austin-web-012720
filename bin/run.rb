@@ -6,6 +6,21 @@ prompt = TTY::Prompt.new
 
 
 Header.header_logo
+Menu.start
+
+
+
+# prot = Protein.protein_select.downcase
+# veg = Vegetable.veggie_select.downcase
+# puts
+# puts "Fuck yeah dude! Let's find some recipes containing #{prot} and #{veg}!"
+# puts 
+# Api.search_recipes(prot, veg)
+# puts
+# until prompt.yes?("Does this recipe look good to you?") == true
+#     puts
+#     Api.search_recipes(prot, veg)
+# end
 
 prot = Protein.protein_select.downcase
 veg = Vegetable.veggie_select.downcase
@@ -17,7 +32,10 @@ puts
 until prompt.yes?("Does this recipe look good to you?") == true
     puts
     Api.search_recipes(prot, veg)
+
 end
+
+
 
 
 
